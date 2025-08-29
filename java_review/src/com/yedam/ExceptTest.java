@@ -1,0 +1,45 @@
+package com.yedam;
+
+import java.util.Scanner;
+import org.junit.jupiter.api.Test;
+
+
+/**
+ * throw 로 예외가 발생시 throws 로 호출한 클래스까지 던진다음
+ * try ~ catch 에서 예외에 대한 처리 실행
+ */
+
+class Score {
+	public void input() throws Exception {
+		Scanner scanner = new Scanner(System.in);
+		int nVal = scanner.nextInt();
+		int nnVal = scanner.nextInt();
+		int totalVal = total(nVal , nnVal);
+		System.out.println(totalVal);
+		scanner.close(); // 스캐너 종료로 메모리 낭비 최소화
+	}
+	public int total(int n1 , int n2) throws Exception {
+		if(n1 < 0 || n2 <0) {throw new Exception("음수값이 들어왔습니다!");}
+		int result = n1 + n2;
+		return result;
+	}
+}
+
+
+
+public class ExceptTest {
+	@Test
+	public void test() {
+		Score sc = new Score();
+		try {
+			sc.input();
+		} catch (Exception e) {
+			// e.printStackTrace();
+			System.out.println(e.getMessage());
+			
+		}
+		finally{
+			System.out.println("the end");
+		}
+	}
+}

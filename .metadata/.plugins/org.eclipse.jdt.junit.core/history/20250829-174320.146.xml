@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EmpMapperTest" project="springTest" tests="3" started="3" failures="0" errors="1" ignored="0">
+  <testsuite name="com.example.demo.EmpMapperTest" time="0.944" displayname="EmpMapperTest" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.EmpMapperTest]">
+    <testcase name="insertEmployee" classname="com.example.demo.EmpMapperTest" time="0.812" displayname="사원등록" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.EmpMapperTest]/[method:insertEmployee()]">
+      <error>org.springframework.dao.DataIntegrityViolationException: &#13;
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-01400: NULL을 ("HR"."EMPLOYEES"."EMAIL") 안에 삽입할 수 없습니다
+&#13;
+https://docs.oracle.com/error-help/db/ora-01400/&#13;
+### The error may exist in file [C:\eGovFrameDev-4.3.1-64bit\workspace-egov\springTest\target\classes\mappers\EmpMapper.xml]&#13;
+### The error may involve com.example.demo.emp.mapper.EmpMapper.insertEmployee-Inline&#13;
+### The error occurred while setting parameters&#13;
+### SQL: INSERT INTO EMPLOYEES ( EMPLOYEE_ID, LAST_NAME , FIRST_NAME , HIRE_DATE ) VALUES(   ?   ,?   ,?   ,? )&#13;
+### Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-01400: NULL을 ("HR"."EMPLOYEES"."EMAIL") 안에 삽입할 수 없습니다
+&#13;
+https://docs.oracle.com/error-help/db/ora-01400/
+; ORA-01400: NULL을 ("HR"."EMPLOYEES"."EMAIL") 안에 삽입할 수 없습니다
+&#13;
+https://docs.oracle.com/error-help/db/ora-01400/&#13;
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)&#13;
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)&#13;
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)&#13;
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)&#13;
+	at jdk.proxy2/jdk.proxy2.$Proxy65.insert(Unknown Source)&#13;
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)&#13;
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)&#13;
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)&#13;
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)&#13;
+	at jdk.proxy2/jdk.proxy2.$Proxy66.insertEmployee(Unknown Source)&#13;
+	at com.example.demo.EmpMapperTest.insertEmployee(EmpMapperTest.java:34)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)&#13;
+Caused by: java.sql.SQLIntegrityConstraintViolationException: ORA-01400: NULL을 ("HR"."EMPLOYEES"."EMAIL") 안에 삽입할 수 없습니다
+&#13;
+https://docs.oracle.com/error-help/db/ora-01400/&#13;
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)&#13;
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)&#13;
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)&#13;
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)&#13;
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)&#13;
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)&#13;
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:298)&#13;
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1508)&#13;
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)&#13;
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)&#13;
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3973)&#13;
+	at oracle.jdbc.driver.OraclePreparedStatement.doExecute(OraclePreparedStatement.java:4447)&#13;
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:4433)&#13;
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1029)&#13;
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)&#13;
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)&#13;
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)&#13;
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)&#13;
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)&#13;
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)&#13;
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)&#13;
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)&#13;
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)&#13;
+	... 10 more&#13;
+Caused by: Error : 1400, Position : 0, SQL = INSERT INTO EMPLOYEES
+(
+EMPLOYEE_ID, LAST_NAME , FIRST_NAME , HIRE_DATE
+)
+VALUES(
+  :1 ,:2 ,:3 ,:4 ), Original SQL = INSERT INTO EMPLOYEES
+(
+EMPLOYEE_ID, LAST_NAME , FIRST_NAME , HIRE_DATE
+)
+VALUES(
+  ?
+  ,?
+  ,?
+  ,?
+), Error Message = ORA-01400: NULL을 ("HR"."EMPLOYEES"."EMAIL") 안에 삽입할 수 없습니다
+&#13;
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)&#13;
+	... 35 more&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="selectEmp" classname="com.example.demo.EmpMapperTest" time="0.126" displayname="전체조회" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.EmpMapperTest]/[method:selectEmp()]"/>
+    <testcase name="selectEmpById" classname="com.example.demo.EmpMapperTest" time="0.004" displayname="단건조회" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.EmpMapperTest]/[method:selectEmpById()]"/>
+  </testsuite>
+</testrun>

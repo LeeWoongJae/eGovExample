@@ -1,0 +1,45 @@
+package com.yedam;
+/*
+ *  클래스 - 설계도 : 속성(필드) + 행위(메서드)
+ *  
+ */
+public class Car {
+	// String model;
+	private String model;
+	// static : 클래스 필드 = 모든 인스턴스가 공유하는 필드
+	// 정적 필드 선언
+//	static String model;
+	
+	public Car() {System.out.println("기본생성자입니다!");}
+	// 생성자 - 객체 생성시 자동호출 없으면 컴파일러가 자동생성
+	// 필드 초기화 , 지정된 값으로도 초기화
+	public Car(String model) {this.model = model;}
+	//private Car(String model) {this.model = model;}
+	
+	// getter and setter
+	public String getModel() {
+		return model;
+	}
+	public String setModel(String newModel) {
+		model = newModel;
+		returm model;
+	}
+	
+	
+	// 임시 싱글톤 변수 선언
+	private static Car instance;
+	
+	public static Car getNewInstance(String model) {
+		// 싱글톤 생성 : 한 영역에 여러가지 조각들을 넣어두고
+		//             필요 할때마다 꺼내 쓰는 개념
+		if(instance == null) {
+			instance = new Car(model);
+		}
+		return instance;
+	}
+	
+	
+	public void drive() {
+		System.out.println(model+" 운행중");
+	}
+}

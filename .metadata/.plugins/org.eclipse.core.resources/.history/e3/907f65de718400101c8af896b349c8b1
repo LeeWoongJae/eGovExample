@@ -1,0 +1,17 @@
+package com.yedam;
+/*
+ *  클래스 - 설계도 : 속성(필드) + 행위(메서드)
+ *  
+ */
+public class Car {
+	static String model;
+	
+	public Car() {System.out.println("기본생성자입니다!");}
+	// 생성자 - 객체 생성시 자동호출 없으면 컴파일러가 자동생성
+	// 필드 초기화 , 지정된 값으로도 초기화
+	public Car(String model) {this.model = model;}
+	
+	public void drive() {
+		System.out.println(model+" 운행중");
+	}
+}

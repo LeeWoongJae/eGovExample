@@ -1,0 +1,47 @@
+package com.yedam;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class CarTest {
+	@Test
+	public void test3() {
+		Car car1 = new Car("파나메라");
+		
+		car1.setModel("BYD");
+		System.out.println(car1.getModel());
+	}
+	
+	
+	@DisplayName("객체생성")
+	@Test
+	public void test() {
+		Car car1 = new Car("파나메라");
+		Car car2 = new Car("페라리");
+		
+		assertEquals(car1, car2);
+	}
+	
+	@DisplayName("싱글톤")
+	@Test
+	public void test2() {
+		Car car1 = Car.getNewInstance("파나메라");
+		Car car2 = Car.getNewInstance("페라리");
+
+		assertEquals(car1, car2);
+	}
+	public static void main(String[] args) {
+		// 유닛 테스트시 메인에 포함되지 않고 따로 정의를 해서 테스트 진행
+		
+		Car car1 = Car.getNewInstance("파나메라");
+		Car car2 = Car.getNewInstance("페라리");
+		car1.drive();
+		car2.drive();
+		new Car();
+		
+		System.out.println(car1 == car2);
+		
+	}
+}

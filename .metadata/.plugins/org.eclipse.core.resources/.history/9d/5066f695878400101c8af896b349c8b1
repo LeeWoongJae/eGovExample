@@ -1,0 +1,18 @@
+package com.yedam.collect;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class EmpVO {
+	int empNo;
+	String empName;
+	
+//	public EmpVO() {}
+//	public EmpVO(int no , String name) {
+//		this.empNo = no;
+//		this.empName = name;
+//	}
+	
+}

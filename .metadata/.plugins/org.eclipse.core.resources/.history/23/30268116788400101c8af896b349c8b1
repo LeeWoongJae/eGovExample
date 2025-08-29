@@ -1,0 +1,11 @@
+package com.yedam.interfacetest;
+
+import org.junit.jupiter.api.Test;
+
+public class AnimalTest {
+	@Test
+	
+	
+	
+
+}

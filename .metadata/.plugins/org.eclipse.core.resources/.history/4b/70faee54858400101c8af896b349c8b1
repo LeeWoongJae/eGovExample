@@ -1,0 +1,14 @@
+package com.yedam.collect;
+
+@Data
+public class EmpVO {
+	int empNo;
+	String empName;
+	
+	public EmpVO() {}
+	public EmpVO(int no , String name) {
+		this.empNo = no;
+		this.empName = name;
+	}
+	
+}

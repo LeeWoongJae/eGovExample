@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.emp.mapper.EmpMapper">
+
+<select id="selectEmp" resultType="com.example.demo.emp.mapper.EmpVO">
+	SELECT   EMPLOYEE_ID AS "employee_id"
+			,FIRST_NAME AS "first_name"
+			,LAST_NAME AS "last_name"
+			,EMAIL AS "email"
+			,PHONE_NUMBER AS "phone_number"
+			,HIRE_DATE AS "hire_date"
+			,JOB_ID AS "job_id"
+			,SALARY AS "salary"
+			,COMMISSION_PCT AS "commision_pct"
+			,MANAGER_ID AS "manager_id"
+			,DEPARTMENT_ID AS "department_id" 
+	FROM employees
+</select>
+
+
+</mapper>

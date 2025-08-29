@@ -1,0 +1,19 @@
+package com.example.demo.emp.mapper;
+
+import java.util.Date;
+
+import lombok.Data;
+
+@Data
+public class EmpVO {
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String phoneNumber;
+	private Date hireDate;
+	private String jobId;
+	private Long salary;
+	private Float commisionPct;
+	private Long managerId;
+	private int departmentId;
+}
