@@ -47,7 +47,11 @@ public class CollectionTest {
 		arr.add("banana");
 		assertEquals(arr.size(), 5);
 		// ArrayList 와 LinkedList 차이점 , 언제 사용하는지 알아와
-		
+		// Answer) ArrayList => index를 통한 빠른 접근가능 / 크기가 가득차면 새로언 배열을 만들고 복하새야해서 리사이즈 비용이 발생
+		// Answer) LinkedList => 각 노드가 데이터 앞뒤 노드 참조를 가진다 / 삽입 삭제가 빠름 (참조만 바꿔주면됨) / 임의 접근이 느림 / 메모리 사용량이 많음
+		// 노드란 ? 데이터와 연결될 정보를 가진 블록 
+		// 사용하는 상황  
+		// 조회가 많고 삽입삭제는 적을때 >> ArrayList (순회)/ 삽입 삭제가 많고 리스트 앞뒤로 작업할때 LinkedList(큐 / 덱)
 		// set 컬렉션에 list 를 담아서 중복을 체크해서 확인
 		Set<String> set = new HashSet<>(arr);
 		assertEquals(set.size(), 5);
