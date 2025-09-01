@@ -1,0 +1,11 @@
+package com.example.demo.emp.mapper;
+
+import lombok.Data;
+
+@Data
+public class DeptVO {
+	private Long departmentId;
+	private String departmentName;
+	private Long managerId;
+	private String locationId;
+}

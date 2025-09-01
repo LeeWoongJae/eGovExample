@@ -5,10 +5,13 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.demo.emp.service.EmpVO;
+
 @Mapper
 public interface EmpMapper {
-	List<EmpVO>selectEmp(); // list 출력
+	List<EmpVO>selectEmp(EmpVO vo); // list 출력
 	EmpVO selectEmpById(Long employeeId); // 단건 조회
 	int insertEmployee(EmpVO vo); // 등록
+	Long empCount(EmpVO vo); // 전체 길이
 	
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EmpMapperTest" project="springTest" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="com.example.demo.EmpMapperTest" time="0.899" displayname="EmpMapperTest" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.EmpMapperTest]">
+    <testcase name="selectEmpById" classname="com.example.demo.EmpMapperTest" time="0.899" displayname="단건조회" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.EmpMapperTest]/[method:selectEmpById()]">
+      <error>org.mybatis.spring.MyBatisSystemException: &#13;
+### Error querying database.  Cause: org.apache.ibatis.reflection.ReflectionException: Could not set property 'deptVO' of 'class com.example.demo.emp.mapper.EmpVO' with value 'com.example.demo.emp.mapper.DeptVO@77e6053' Cause: org.apache.ibatis.reflection.ReflectionException: There is no setter for property named 'deptVO' in 'class com.example.demo.emp.mapper.EmpVO'&#13;
+### The error may exist in file [C:\eGovFrameDev-4.3.1-64bit\workspace-egov\springTest\target\classes\mappers\EmpMapper.xml]&#13;
+### The error may involve com.example.demo.emp.mapper.EmpMapper.selectDeptById&#13;
+### The error occurred while handling results&#13;
+### SQL: SELECT DEPARTMENT_ID        ,DEPARTMENT_NAME        ,MANAGER_ID        ,LOCATION_ID FROM departments WHERE department_id = ?&#13;
+### Cause: org.apache.ibatis.reflection.ReflectionException: Could not set property 'deptVO' of 'class com.example.demo.emp.mapper.EmpVO' with value 'com.example.demo.emp.mapper.DeptVO@77e6053' Cause: org.apache.ibatis.reflection.ReflectionException: There is no setter for property named 'deptVO' in 'class com.example.demo.emp.mapper.EmpVO'&#13;
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:101)&#13;
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)&#13;
+	at jdk.proxy2/jdk.proxy2.$Proxy64.selectOne(Unknown Source)&#13;
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:154)&#13;
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87)&#13;
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)&#13;
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)&#13;
+	at jdk.proxy2/jdk.proxy2.$Proxy65.selectEmpById(Unknown Source)&#13;
+	at com.example.demo.EmpMapperTest.selectEmpById(EmpMapperTest.java:35)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)&#13;
+Caused by: org.apache.ibatis.reflection.ReflectionException: Could not set property 'deptVO' of 'class com.example.demo.emp.mapper.EmpVO' with value 'com.example.demo.emp.mapper.DeptVO@77e6053' Cause: org.apache.ibatis.reflection.ReflectionException: There is no setter for property named 'deptVO' in 'class com.example.demo.emp.mapper.EmpVO'&#13;
+	at org.apache.ibatis.reflection.wrapper.BeanWrapper.setBeanProperty(BeanWrapper.java:181)&#13;
+	at org.apache.ibatis.reflection.wrapper.BeanWrapper.set(BeanWrapper.java:61)&#13;
+	at org.apache.ibatis.reflection.MetaObject.setValue(MetaObject.java:119)&#13;
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.applyPropertyMappings(DefaultResultSetHandler.java:512)&#13;
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.getRowValue(DefaultResultSetHandler.java:418)&#13;
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.handleRowValuesForSimpleResultMap(DefaultResultSetHandler.java:366)&#13;
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.handleRowValues(DefaultResultSetHandler.java:337)&#13;
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.handleResultSet(DefaultResultSetHandler.java:310)&#13;
+	at org.apache.ibatis.executor.resultset.DefaultResultSetHandler.handleResultSets(DefaultResultSetHandler.java:202)&#13;
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:66)&#13;
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80)&#13;
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65)&#13;
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336)&#13;
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158)&#13;
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110)&#13;
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142)&#13;
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:75)&#13;
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)&#13;
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)&#13;
+	... 10 more&#13;
+Caused by: org.apache.ibatis.reflection.ReflectionException: There is no setter for property named 'deptVO' in 'class com.example.demo.emp.mapper.EmpVO'&#13;
+	at org.apache.ibatis.reflection.Reflector.getSetInvoker(Reflector.java:377)&#13;
+	at org.apache.ibatis.reflection.MetaClass.getSetInvoker(MetaClass.java:164)&#13;
+	at org.apache.ibatis.reflection.wrapper.BeanWrapper.setBeanProperty(BeanWrapper.java:172)&#13;
+	... 32 more&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

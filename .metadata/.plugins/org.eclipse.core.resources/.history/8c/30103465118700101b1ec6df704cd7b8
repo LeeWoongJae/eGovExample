@@ -1,0 +1,10 @@
+package com.example.demo.board.mapper;
+
+import java.util.List;
+
+import com.example.demo.board.service.BoardVO;
+
+public interface BoardMapper {
+	
+	List<BoardVO> selectAll(); // 전체조회
+}

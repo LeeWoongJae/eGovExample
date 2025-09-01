@@ -1,0 +1,25 @@
+package com.example.demo.emp.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.example.demo.emp.mapper.EmpMapper;
+import com.example.demo.emp.mapper.EmpVO;
+
+@Controller
+public class EmpController {
+	
+	@Autowired EmpMapper empMapper;
+	
+	@GetMapping("empList")
+	public String empList(Model model) {
+		EmpVO vo = new EmpVO();
+		vo.setEmployeeId(50L);
+		vo.setPrevPage(1);
+		vo.setNextPage(10);
+		model.addAttribute("empList" , empMapper.selectEmp());
+		return "empList";  // empList.html
+	}
+}

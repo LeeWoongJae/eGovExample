@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.board.mapper.BoardMapper">
+<select id="selectAll" resultType="BoardVO">
+SELECT b.bno bno
+       ,b.title title
+       ,b.content content
+       ,b.writer writer
+       ,b.regdate regdate
+       ,b.updatedate updatedate,
+       r.reply reply
+       ,r.replyer replyer
+       ,r.replydate replydate
+FROM tbl_board b
+JOIN tbl_reply r
+ON b.bno = r.bno
+</select>
+
+
+</mapper>
