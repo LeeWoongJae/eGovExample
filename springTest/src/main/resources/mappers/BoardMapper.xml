@@ -11,6 +11,19 @@ SELECT BNO
 FROM TBL_BOARD
 ORDER BY BNO
 </select>
+
+<select id="selectBoard" resultType="BoardVO">
+SELECT BNO
+      ,TITLE
+      ,CONTENT
+      ,WRITER
+      ,REGDATE
+      ,UPDATEDATE
+FROM TBL_BOARD
+WHERE bno = #{bno}
+ORDER BY BNO
+</select>
+
 <select id="reply" resultType="replyVO">
 SELECT b.bno bno
        ,b.title title

@@ -17,13 +17,18 @@ public class BoardMapperTest {
 	
 	
 	@DisplayName("전체조회")
-	@Test
+	//@Test
 	public void selectAll() {
 		List<BoardVO> list = boardMapper.selectAll();
 		list.forEach(board -> System.out.println(board));
 	}
 	
-	
+	@DisplayName("단건조회")
+	@Test
+	public void selectBaord() {
+		BoardVO board = boardMapper.selectBoard(3L);
+		System.out.println(board);
+	}
 	
 	
 }

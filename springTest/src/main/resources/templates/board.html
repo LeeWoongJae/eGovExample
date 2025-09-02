@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>게시글정보</h1>
+<table>
+<tr>
+<td>게시글번호 : </td>
+<td th:text="${board.bno}"></td>
+</tr>
+<tr>
+<td>게시글제목 : </td>
+<td th:text="${board.title}"></td>
+</tr>
+<tr>
+<td>글내용 : </td>
+<td th:text="${board.content}"></td>
+</tr>
+<tr>
+<td>작성자 : </td>
+<td th:text="${board.writer}"></td>
+</tr>
+<tr>
+<td>글등록일 : </td>
+<td th:text="${  #dates.format(board.regDate, 'yyyy-MM-dd')  }"></td>
+</tr>
+<tr>
+<td>글수정일 : </td>
+<td th:text="${  #dates.format(board.updateDate,'yyyy-MM-dd')  }"></td>
+</tr>
+</table>
+<!-- 게시글조회 종료부 -->
+<!-- 댓글조회 시작부 -->
+<div id="replyList"></div>
+<!-- 댓글종료 시작부 -->
+
+<!-- 댓글등록 시작부 -->
+<form id="frm">
+	<input name="reply">
+	<input name="replyer">
+	<input name="bno" type="hidden" th:value="${board.bno}">
+	<button type="button" class="btnReplyInsert">댓글작성</button>
+</form>
+<!-- 댓글등록 종료부 -->
+<script>
+replyInsert();
+/*-------------------------------------
+댓글 조회 ajax 호출
+---------------------------------------*/
+function replyList(){
+	const url = `/reply/pages/${bno}/1`
+	fetch( url )
+	.then( result => result.json() )
+	.then( result => replyListCallback(result) )
+}
+
+/*-------------------------------------
+등록 버튼 이벤트 지정
+---------------------------------------*/	
+const url = "/reply";
+function replyInsert(){
+	document.querySelector(".btnReplyInsert").addEventListener("click", function(){
+
+		//파라미터 만들기
+		const reply = frm.reply.value;
+		const replyer = frm.replyer.value;
+		const bno = frm.bno.value;
+		const param = {reply, replyer, bno}
+		
+		//등록 요청
+		fetch(url, {
+			method:"post",
+			headers: {
+			      "Content-Type": "application/json",
+			      // 'Content-Type': 'application/x-www-form-urlencoded',
+			    },
+			body : JSON.stringify(param), 
+		})
+		.then( result => result.text() )
+		.then( result => alert(result) )
+		// .then( result => replyList() )
+	})
+} 
+
+</script>
+</body>
+
+</html>

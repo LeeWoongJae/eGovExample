@@ -13,14 +13,22 @@ public class BoardController {
 
 	@Autowired BoardMapper boardMapper;
 	
+	// 단건조회
+	@GetMapping("/board")
+	public String board(@RequestParam Long bno , Model model) {
+		model.addAttribute("board" , boardMapper.selectBoard(bno));
+		return "board";
+	}
 	
-	@GetMapping("boardList")
+	// 전체조회
+	@GetMapping("/boardList")
 	public String boardList(Model model) {
 		model.addAttribute("boardList",boardMapper.selectAll());
 		return "boardList";
 	}
 	
-	@GetMapping("reply")
+	// 댓글목록
+	@GetMapping("/reply")
 	public String replyList(Model model , @RequestParam("bno") Long bno) {
 		
 		model.addAttribute("reply",boardMapper.reply(bno));
