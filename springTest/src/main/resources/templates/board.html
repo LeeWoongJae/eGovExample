@@ -39,22 +39,109 @@
 
 <!-- 댓글등록 시작부 -->
 <form id="frm">
-	<input name="reply">
-	<input name="replyer">
+	<input name="reply" placeholder="reply">
+	<input name="replyer" placeholder="replyer">
 	<input name="bno" type="hidden" th:value="${board.bno}">
+	<input name="rno" type="hidden" value="">
 	<button type="button" class="btnReplyInsert">댓글작성</button>
+	<button type="button" class="btnReplyUpdate">댓글수정</button>
 </form>
 <!-- 댓글등록 종료부 -->
 <script>
 replyInsert();
+replyUpdate();
+replyList();
+btnReplyUpdateForm();
+btnReplyDelete();
 /*-------------------------------------
 댓글 조회 ajax 호출
 ---------------------------------------*/
 function replyList(){
-	const url = `/reply/pages/${bno}/1`
+	const bno = frm.bno.value;
+	const url = `/board/${bno}/reply`;
 	fetch( url )
 	.then( result => result.json() )
 	.then( result => replyListCallback(result) )
+}
+/*-------------------------------------
+댓글 조회 콜백
+---------------------------------------*/
+function replyListCallback(result){
+	console.log(result);
+	const replys = document.querySelector("#replyList");
+	replys.innerHTML = "";
+	result.forEach(item => replys.insertAdjacentElement("beforeend", replyMake(item)) );
+}
+/*-------------------------------------
+댓글 조회 태그 생성
+---------------------------------------*/
+function replyMake(item){
+	let tag = document.createElement("div");
+	tag.className = "row mt-2";
+	tag.dataset.id = item.rno;
+	tag.innerHTML = `
+        <div class="col-6">${item.reply}</div>
+        <div class="col-3">${item.replyer}</div>
+        <div class="col-3">
+          <button type="button"
+                  data-rno="${item.rno}" 
+                  class="btn btn-success btnReplyUpdateForm">수정</button>			                           
+          <button type="button"
+                  data-rno="${item.rno}" 
+                  class="btn btn-danger btnReplyDelete">삭제</button>
+        </div>`;
+    return tag;    
+};
+/*-------------------------------------
+이벤트 지정 - 수정할 댓글 번호 지정
+---------------------------------------*/
+function btnReplyUpdateForm(){
+	const replys = document.querySelector("#replyList").addEventListener("click",function(event){
+		console.log(event.target.dataset.rno);
+		frm.rno.value = event.target.dataset.rno;
+	})
+}
+function btnReplyDelete(){
+	// 삭제는 데이터 완전삭제인지 아니면 non display인지
+	const replys = document.querySelector("#replyList").addEventListener("click",function(event){
+		console.log(event.target.dataset.rno);
+		console.log(event.target);
+		const rno = event.target.dataset.rno;
+		const div = document.querySelectorAll(".col-6");
+		const divOrigin = document.querySelectorAll(`div[data-id="${rno}"]`)[0];
+		const divId = document.querySelectorAll(`div[data-id="${rno}"]`)[0].dataset.id;
+		console.log("divId : "+divId);
+		console.log("div.length : "+div.length);
+		const param = {rno};
+		
+		if(confirm("정말 삭제하시겠습니까?")){
+			// 데이터 삭제 처리
+			fetch(`/reply/${rno}`,{
+				method : "delete",
+				headers : {
+					"Content-Type": "application/json",
+				},
+				 body : JSON.stringify(param),
+			})
+			.then(result => result.text())
+			.then(result => {alert("삭제완료! "+result); replyList();})
+		}else{
+			alert("삭제 취소하였습니다");
+		}
+	
+		
+		<!--
+		// 단순 숨기기 라면 
+		if(divId == rno)
+		{
+			console.log("같아요!");
+			console.log(divOrigin.style.display="none");
+		}else{
+			alert("달라요!");
+		}
+		-->
+		
+    })
 }
 
 /*-------------------------------------
@@ -83,7 +170,25 @@ function replyInsert(){
 		.then( result => alert(result) )
 		// .then( result => replyList() )
 	})
-} 
+};
+
+function replyUpdate(){
+	document.querySelector(".btnReplyUpdate").addEventListener("click",function(){
+		const reply = frm.reply.value;
+		const rno = frm.rno.value;
+		const param = {reply};
+		fetch(`/reply/${rno}`,{
+			method:"put",
+			headers: {
+			      "Content-Type": "application/json",
+			      // 'Content-Type': 'application/x-www-form-urlencoded',
+			    },
+			    body : JSON.stringify(param), 
+		})
+		.then( result => result.text() )
+		.then( result => {alert("수정완료! "+result); replyList();} )
+	})
+};
 
 </script>
 </body>
