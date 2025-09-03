@@ -9,24 +9,33 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+@Schema(description = "회원정보")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserVO {
-	@JsonProperty("username")
+	
+	
+	@Schema(description = "회원이름")
+	//@JsonProperty("username")
 	String name;
 	
-	@JsonIgnore
+	@Schema(description = "회원나이")
+	//@JsonIgnore
 	int age;
 	
+	@Schema(description = "가입일자")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	@JsonFormat(pattern = "yyyy-MM")
 	private Date wdate;
 	
+	@Schema(description = "취미")
 	// == String[] hobby
 	List<String> hobby;
 }

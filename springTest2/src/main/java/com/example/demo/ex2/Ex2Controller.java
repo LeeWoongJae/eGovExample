@@ -14,14 +14,19 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.ex1.UserVO;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
 import reactor.core.publisher.Mono;
 
+@Tag(name = "회원관리API" , description = "회원관리컨트롤러")
 @Log4j2
 @RequestMapping("/api")
 @RestController // Controller + ResponseBody
 public class Ex2Controller {
-
+	
+	@Tag(name = "회원관리API")
+	@Operation(summary = "회원조회")
 	// UserVO 단건조회
 	@GetMapping("/rest1")
 	public UserVO rest1() {
@@ -33,6 +38,8 @@ public class Ex2Controller {
 //		return userVO;
 //	}
 	
+	@Tag(name = "회원관리API")
+	@Operation(summary = "단건조회")
 	@GetMapping("/rest2") // JSON String으로 넘기는 건 GET 방식이 불가 // queryString : URI?name=김길동&age=20&...
 	public UserVO rest2(UserVO userVO) {
 		return userVO;

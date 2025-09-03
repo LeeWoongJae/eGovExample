@@ -49,7 +49,7 @@ public class ReplyController {
 	// 전체조회
 	@GetMapping("/board/{bno}/reply")
 	public List<ReplyVO> list(ReplyVO reply , Model model) {
-		reply.setBno(1L);
+//		reply.setBno(1L);
 		reply.setNextPage(10);
 		reply.setPrevPage(1);
 		List<ReplyVO> list = replyMapper.getList(reply);

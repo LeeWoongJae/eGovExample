@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorate="~{layout/layout}"
+
+>
 <head>
 <meta charset="UTF-8">
+<!-- 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+ -->
 <style type="text/css">
 .salaryred {
 	color:red;
@@ -25,7 +31,7 @@ function init(){
 </script>
 <title>Insert title here</title>
 </head>
-<body>
+<body layout:fragment="content">
 <h1>employee - list</h1>
     <!--  검색 폼 시작 -->
 	<form name="frmSearch" th:object="${empVO}" action="empList">
@@ -86,7 +92,11 @@ function init(){
 	  </ul>
 	</nav>
 	<!-- 페이징 종료 -->
+<script th:inline="javascript">
+	let list = /*[[${empList}]]*/
 
+
+</script>
 
 </body>
 </html>

@@ -59,7 +59,8 @@
 			      from tbl_reply
 			     where bno =  #{bno}
 			       and rno > 0
-			       and rownum <= #{nextPage} 
+			       and rownum <= #{nextPage}
+			       
 		     ) 
 	 where rn >= #{prevPage}
 	]]>
