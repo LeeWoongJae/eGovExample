@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+    <head>
+        <title>Spring Security Example</title>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+        <div sec:authorize="not isAuthenticated()">
+        	<a href="/login">login</a>
+        </div>
+        
+        <div sec:authorize="isAuthenticated()">
+        	<span sec:authentication="principal.userDTO.fullName"></span>
+        	<span th:text="${session.deptName}">deptName</span>
+        </div>
+        
+        <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+    </body>
+</html>

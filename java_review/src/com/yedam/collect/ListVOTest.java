@@ -20,9 +20,9 @@ public class ListVOTest {
 	@Test
 	public void test() {
 		List<EmpVO> list = new ArrayList<>();
-		list.add(new EmpVO(100 , "홍길동"));
-		list.add(new EmpVO(101 , "홍길순"));
-		list.add(new EmpVO(102 , "박점멸"));
+		list.add(new EmpVO(100 , "홍길동", 10));
+		list.add(new EmpVO(101 , "홍길순", 30));
+		list.add(new EmpVO(102 , "박점멸",50));
 		
 		for(EmpVO vo : list) {
 			System.out.println(vo.getEmpName());

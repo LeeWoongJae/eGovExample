@@ -1,8 +1,10 @@
 package com.yedam.collect;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class EmpVO {
 	final private int empNo;
 	final private String empName;
