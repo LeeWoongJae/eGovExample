@@ -8,8 +8,9 @@ SELECT BNO
       ,WRITER
       ,REGDATE
       ,UPDATEDATE
+      ,ATTACH
 FROM TBL_BOARD
-ORDER BY BNO
+ORDER BY BNO DESC
 </select>
 
 <select id="selectBoard" resultType="BoardVO">
@@ -19,6 +20,7 @@ SELECT BNO
       ,WRITER
       ,REGDATE
       ,UPDATEDATE
+      ,ATTACH
 FROM TBL_BOARD
 WHERE bno = #{bno}
 ORDER BY BNO
@@ -40,6 +42,23 @@ JOIN tbl_reply r
 ON b.bno = r.bno
 WHERE b.bno = #{bno}
 </select>
+
+<insert id="registBoard" parameterType="BoardVO">
+<!-- 	<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+		SELECT seq_board.nextval FROM dual
+	</selectKey>
+-->
+INSERT INTO tbl_board(
+    BNO
+    ,TITLE
+    ,CONTENT
+    ,WRITER
+    ,ATTACH
+)
+VALUES (seq_board.nextval , #{title} , #{content}, #{writer}, #{attach})
+
+</insert>
+
 
 
 </mapper>

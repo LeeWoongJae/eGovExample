@@ -27,7 +27,7 @@ public class EmpController {
 //		model.addAttribute("empList" , empMapper.selectEmp(vo));
 //		return "empList";  // empList.html
 //	}
-	@GetMapping("empList") // empList?paging=2
+	@GetMapping("/empList") // empList?paging=2
 	public String empList(Model model, EmpVO empVo , Paging paging) {
 		paging.setTotalRecord(empService.empCount(empVo));
 		paging.setPageUnit(5); // 페이지당 5개 데이터만
@@ -35,13 +35,13 @@ public class EmpController {
 		empVo.setNextPage(paging.getLast());
 		
 		model.addAttribute("empList" , empService.selectEmp(empVo));
-		return "empList";  // empList.html
+		return "emp/empList";  // empList.html
 	}
 	
-	@GetMapping("emp")
+	@GetMapping("/emp")
 	public String emp(Model model , @RequestParam("employeeId") Long employeeId) {
 		model.addAttribute("emp" , empService.selectEmpById(employeeId));
-		return "emp";
+		return "emp/emp";
 	}
 	
 	

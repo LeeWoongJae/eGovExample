@@ -13,4 +13,5 @@ public interface BoardMapper {
 	List<BoardVO> selectAll(); // 전체조회
 	List<ReplyVO> reply(Long bno); // 댓글조회
 	BoardVO selectBoard(Long bno); // 단건조회
+	int registBoard(BoardVO board); // 게시글등록
 }

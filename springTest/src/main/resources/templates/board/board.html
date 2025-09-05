@@ -35,6 +35,13 @@
 	<td>글수정일 : </td>
 	<td th:text="${  #dates.format(board.updateDate,'yyyy-MM-dd')  }"></td>
 	</tr>
+	<tr>
+	<td>첨부파일</td>
+	<td>
+	<a th:href="|/board/filedown/${board.attach}|" th:text="${board.attach}"></a>
+	<img th:src="|/upload/${board.attach}|">
+	</td>
+	</tr>
 	</table>
 	</div>
 </div>

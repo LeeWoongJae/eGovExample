@@ -36,7 +36,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/", "/home").permitAll()
+				.requestMatchers("/", "/home","/upload").permitAll()
 				.requestMatchers("/emp/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
@@ -47,7 +47,7 @@ public class WebSecurityConfig {
 				
 			)
 			.logout((logout) -> logout.permitAll());
-			// http.csrf(csrf->csrf.disable()); // token이 넘어가지 않게 break , token생성은 되는데 넘어가지는 않음
+			http.csrf(csrf->csrf.disable()); // token이 넘어가지 않게 break , token생성은 되는데 넘어가지는 않음
 			http.exceptionHandling( ex -> ex.accessDeniedHandler( accessDeniedHandler() ) );
 		
 		
@@ -65,7 +65,7 @@ public class WebSecurityConfig {
 		UserDetails user =
 			 User.withDefaultPasswordEncoder()
 				.username("user")
-				.password("password")
+				.password("1234")
 				.roles("USER","INSA")
 				.build();
 		UserDetails admin =
