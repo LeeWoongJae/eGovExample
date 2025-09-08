@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.domain.Customer;
@@ -17,5 +18,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
 	@Query("select u from Customer u where u.phone like %?1% order by name desc")
 	public List<Customer> findByPhone(String phone);
 	
+	@Query("select u from Customer u where u.phone like %:phone% or u.name like %:name% order by u.name desc")
+	public List<Customer> findByPhoneOrName(@Param("phone")String phone , @Param("name") String name);
 	
 }

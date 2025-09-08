@@ -1,11 +1,16 @@
 package com.example.demo.domain;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import lombok.Builder;
 import lombok.Data;
+
 
 @Data
 @Entity
@@ -13,11 +18,18 @@ public class Customer {
 	
 	
 	public Customer() {}
-	
 	public Customer(String name, String phone) {
+		this.name = name;
+		this.phone = phone;
+	}
+	
+	
+	@Builder
+	public Customer(String name, String phone, Address address) {
 		super();
 		this.name = name;
 		this.phone = phone;
+		this.address = address;
 	}
 
 	@Id
@@ -27,6 +39,11 @@ public class Customer {
 	@Column(length	=	20,	nullable	=	false)
 	private String	name;
 	
+	
 	@Column(length	=	20,	nullable	=	false,	unique	=	true)
 	private String	phone;		
+	
+	@OneToOne
+	@JoinColumn(name="address_id")
+	Address address;
 }

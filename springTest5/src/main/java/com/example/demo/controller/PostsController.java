@@ -1,0 +1,43 @@
+package com.example.demo.controller;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.dto.PostsSaveRequestDto;
+import com.example.demo.dto.PostsUpdateRequestDto;
+import com.example.demo.service.PostsService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@RestController
+public class PostsController {
+	private final PostsService postsService;
+	
+	
+	@PostMapping("/api/v1/posts")
+	public Long save(@RequestBody PostsSaveRequestDto requestDto) {
+		return postsService.save(requestDto);
+	}
+	
+	 @PutMapping("/api/v1/posts/{id}")
+	    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+	        return postsService.update(id, requestDto);
+	    }
+	
+	@GetMapping("/api/v1/posts")
+	public String index(Model model,
+			  @PageableDefault(page = 1, size = 3, sort = "id", direction = Direction.ASC ) Pageable pagable) {
+					//model.addAttribute("posts", postsService.findAllDesc() );
+					model.addAttribute("posts", postsService.findAllPaging(pagable) );
+					return "index";
+	}
+}
