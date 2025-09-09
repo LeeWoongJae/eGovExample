@@ -1,6 +1,0 @@
-package com.example.demo.emp.mapper;
-
-public class EmpVO {
-	String first_name;
-	String last_name;
-}

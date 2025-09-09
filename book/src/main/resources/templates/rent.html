@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style type="text/css">
+img {
+	width:30px;
+}
+
+.container{
+background-color: lightgreen;
+}
+header > h1{
+background-color: gray;
+margin:0px;
+padding:0px;
+}
+menu {
+background-color: black;
+}
+menu > li{
+display : inline-block;
+margin-right: 20px; 
+
+}
+
+menu > li > a {
+  text-decoration: none;   
+  color: white;            
+}
+
+menu > li > a:hover {
+  text-decoration: underline; 
+           
+}
+
+</style>
+
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>책 단건 조회</title>
+</head>
+<body class="container">
+<header>
+<h1>도서대여관리 프로그램</h1>
+</header>
+<menu>
+<li><a href="/regist">도서등록</a></li>
+<li><a href="/book">도서목록조회/수정</a></li>
+<li><a href="/rentList">대여현황조회</a></li>
+<li><a href="/">흠으로</a></li>
+</menu>
+<table class="table">
+<tr>
+<th>도서번호</th>
+<th>도서명</th>
+<th>대여총계</th>
+<th>대여횟수</th>
+</tr>
+<tr th:each="book : ${rentList}">
+<td th:text="${book.bookNo}"></td>
+<td th:text="${book.bookName}"></td>
+<td th:text="${ #numbers.formatInteger(book.rentPrice,3,'COMMA')}"></td>
+<td th:text="${book.rentStatus}"></td>
+</tr>
+</table>
+<div class="d-flex justify-content-center">
+<button type="button" class="btn btn-warning" onclick="location.href='#'">삭제</button>
+</div>
+</body>
+</html>

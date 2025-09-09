@@ -1,7 +1,0 @@
-package com.yedam.interfacetest;
-
-public interface Animal {
-	// 기본이 public 이라서 public 생략 가능
-	public void sound();
-	
-}

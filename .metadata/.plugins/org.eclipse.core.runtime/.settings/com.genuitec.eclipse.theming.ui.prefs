@@ -1,11 +1,13 @@
 applyBackground=false
 approved.defs.file.last.changed.time=1693315978000
+codetogether.announce.displayed=true
 configurationInstallLocation=/C\:/eGovFrameDev-4.3.1-64bit/eclipse/
+ct.reengagement.display.after=1767831127412
 ct.upsell.display.after=1757054187713
 eclipse.preferences.version=1
 iconcolormode=primary
-last.download.attempt.time=1756858230889
-lastConfiguration=1756945577049
+last.download.attempt.time=1757290251250
+lastConfiguration=1757376828323
 newinstall=false
 showWelcomeDialog=false
 workbench.theme=Dark Gray

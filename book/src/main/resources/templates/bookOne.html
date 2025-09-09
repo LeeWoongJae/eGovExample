@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+img {
+	width:50px;
+}
+.container{
+background-color: lightgreen;
+}
+header > h1{
+background-color: gray;
+margin:0px;
+padding:0px;
+}
+menu {
+background-color: black;
+}
+menu > li{
+display : inline-block;
+margin-right: 20px; 
+
+}
+
+menu > li > a {
+  text-decoration: none;   
+  color: white;            
+}
+
+menu > li > a:hover {
+  text-decoration: underline; 
+           
+}
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>책 단건 조회</title>
+</head>
+<body class="container">
+<table class="table">
+<tr>
+<th>도서번호</th>
+<th>도서명</th>
+<th>표지</th>
+<th>출판일자</th>
+<th>금액</th>
+<th>출판사</th>
+<th>도서소개</th>
+</tr>
+<tr>
+<td th:text="${b.bookNo}"></td>
+<td th:text="${b.bookName}"></td>
+<td><img th:src="'/'+${b.bookCoverimg}" th:alt="${b.bookCoverimg}"></td>
+<td th:text="${ #dates.format(b.bookDate, 'yyyy-MM-dd') }"></td>
+<td th:text="${ #numbers.formatInteger(b.bookPrice,2,'COMMA')}"></td>
+<td th:text="${b.bookPublisher}"></td>
+<td th:text="${b.bookInfo}"></td>
+</tr>
+</table>
+<div class="d-flex justify-content-center">
+<button type="button" class="btn btn-warning" onclick="location.href='/regist'">삭제</button>
+</div>
+</body>
+</html>

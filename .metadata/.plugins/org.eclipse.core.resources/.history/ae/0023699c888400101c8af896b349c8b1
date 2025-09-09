@@ -1,9 +1,0 @@
-package com.yedam.collect;
-
-@Data
-public class DeptVO {
-
-	
-	
-	
-}
